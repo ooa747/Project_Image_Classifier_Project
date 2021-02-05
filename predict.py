@@ -1,5 +1,4 @@
 
-
 import warnings
 warnings.filterwarnings('ignore')
 import numpy as np
@@ -55,7 +54,9 @@ def predict(image_path, model, top_k):
     probs, classes = tf.math.top_k(prediction,top_k)
     return probs.numpy()[0], classes.numpy()[0]
 	
-probs, classes = predict(image_path , reload_keras_model, top_k)
+		probs, classes = predict(image_path , reload_keras_model, top_k)
+		labels = [class_names[str(c+1)] for c in classes]
+		print(probs)
+		print(labels)
 
-labels = [class_names[str(c+1)] for c in classes]
 
