@@ -65,9 +65,6 @@ def predict(image_path, model, top_k):
     modify_np_image = np.expand_dims(modify_np_image, axis=0)
     prediction = model.predict(modify_np_image)
     probs, classes = tf.math.top_k(prediction,top_k)
-    #probs=probs.numpy()[0]
-   # classes=classes.numpy()[0]
-    #return probs, classes
 	return probs.numpy()[0], classes.numpy()[0]
 	
 probs, class_names = predict(image_path , reload_keras_model, top_k)
